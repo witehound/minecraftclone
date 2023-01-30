@@ -1,3 +1,4 @@
 import Ground from "./Ground/Ground";
+import Player from "./Player/Player";
 
-export { Ground };
+export { Ground, Player };
