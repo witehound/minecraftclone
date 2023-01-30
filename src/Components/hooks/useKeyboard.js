@@ -35,15 +35,19 @@ export const useKeyboard = () => {
   const handleKeyDown = useCallback((e) => {
     const action = actionByKey(e.code);
     if (action) {
-      setActions((prev) => ({ ...prev, action: true }));
+      setActions((prev) => {
+        return { ...prev, [action]: true };
+      });
     }
-  });
+  }, []);
   const handleKeyUp = useCallback((e) => {
     const action = actionByKey(e.code);
     if (action) {
-      setActions((prev) => ({ ...prev, action: false }));
+      setActions((prev) => {
+        return { ...prev, [action]: false };
+      });
     }
-  });
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
