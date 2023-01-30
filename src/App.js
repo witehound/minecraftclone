@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Sky } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
-import { Ground, Player, FPV } from "./Components";
+import { Ground, Player, FPV, Cubes } from "./Components";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
         <FPV />
         <Physics>
           <Player />
+          <Cubes />
           <Ground />
         </Physics>
       </Canvas>

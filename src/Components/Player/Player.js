@@ -20,13 +20,6 @@ const Player = () => {
 
   const actions = useKeyboard();
 
-  // console.log(
-  //   "actions",
-  //   Object.entries(actions).filter(([k]) => {
-  //     return k === "jump";
-  //   })
-  // );
-
   const pos = useRef([0, 0, 0]);
 
   useEffect(() => {
@@ -38,6 +31,7 @@ const Player = () => {
   useEffect(() => {
     api.velocity.subscribe((v) => (vel.current = v));
   }, [api.velocity]);
+
   useFrame(() => {
     camera.position.copy(
       new Vector3(pos.current[0], pos.current[1], pos.current[2])
