@@ -3,6 +3,7 @@ import { useSphere } from "@react-three/cannon";
 import { useRef } from "react";
 import { Vector3 } from "three";
 import { useEffect } from "react";
+import { useKeyboard } from "../hooks";
 
 const Player = () => {
   const { camera } = useThree();
@@ -13,6 +14,13 @@ const Player = () => {
       position: [0, 1, 0],
     };
   });
+
+  const actions = useKeyboard();
+
+  console.log(
+    "actions",
+    Object.entries(actions).filter(([k, v]) => v)
+  );
 
   const pos = useRef([0, 0, 0]);
 
