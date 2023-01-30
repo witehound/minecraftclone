@@ -3,7 +3,7 @@ import { useSphere } from "@react-three/cannon";
 import { useRef } from "react";
 import { Vector3 } from "three";
 import { useEffect } from "react";
-import { useKeyboard } from "../hooks";
+import { useKeyboard } from "../../hooks";
 
 const JUMP_FORCE = 4;
 const SPEED = 4;
