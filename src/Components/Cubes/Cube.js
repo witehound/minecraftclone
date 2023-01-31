@@ -1,8 +1,10 @@
 import { useBox } from "@react-three/cannon";
 import * as textures from "../../images/textures";
 import { useStore } from "../../hooks";
+import { useState } from "react";
 
 const Cube = ({ pos, texture }) => {
+  const [hover, setHover] = useState(false);
   const [ref] = useBox(() => ({
     type: "Static",
     position: pos,
@@ -16,6 +18,14 @@ const Cube = ({ pos, texture }) => {
 
   return (
     <mesh
+      onPointerMove={(e) => {
+        e.stopPropagation();
+        setHover(true);
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation();
+        setHover(false);
+      }}
       ref={ref}
       onClick={(e) => {
         e.stopPropagation();
@@ -34,7 +44,13 @@ const Cube = ({ pos, texture }) => {
       }}
     >
       <boxBufferGeometry attach="geometry" />
-      <meshStandardMaterial attach="material" map={activeTexture} />
+      <meshStandardMaterial
+        attach="material"
+        map={activeTexture}
+        color={hover ? "grey" : "white"}
+        transparent={true}
+        opacity={texture === "glass" ? 0.6 : 1}
+      />
     </mesh>
   );
 };
