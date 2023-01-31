@@ -15,12 +15,10 @@ export const useStore = create((set) => ({
       ],
     }));
   },
-  removeCube: (id) => {
+  removeCube: (x, y, z) => {
     set((prev) => ({
-      ...prev,
-      cubes: prev.cubes.filter((cube) => {
-        const { key } = cube;
-        return key !== id;
+      cubes: prev.cubes.filter(({ pos }) => {
+        return pos[0] !== x || pos[1] !== y || pos[2] !== z;
       }),
     }));
   },

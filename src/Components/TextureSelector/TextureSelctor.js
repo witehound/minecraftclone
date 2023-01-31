@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useStore } from "../../hooks";
+import { useKeyboard, useStore } from "../../hooks";
 
 const TextureSelctor = () => {
   const [visible, setVisible] = useState(false);
   const [activeTexture] = useStore((state) => [state.texture]);
+  const actions = useKeyboard();
 
   useEffect(() => {
     const visibilityTimeOut = setTimeout(() => {
@@ -16,7 +17,9 @@ const TextureSelctor = () => {
       clearTimeout(visibilityTimeOut);
     };
   }, [activeTexture]);
-  return <div>{visible ? <div></div> : null}</div>;
+  return (
+    <div>{visible ? <div className="absolute centered"></div> : null}</div>
+  );
 };
 
 export default TextureSelctor;

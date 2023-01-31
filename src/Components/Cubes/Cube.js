@@ -2,7 +2,7 @@ import { useBox } from "@react-three/cannon";
 import * as textures from "../../images/textures";
 import { useStore } from "../../hooks";
 
-const Cube = ({ pos, texture, id }) => {
+const Cube = ({ pos, texture }) => {
   const [ref] = useBox(() => ({
     type: "Static",
     position: pos,
@@ -22,7 +22,7 @@ const Cube = ({ pos, texture, id }) => {
         const clickedFace = Math.floor(e.faceIndex / 2);
         const { x, y, z } = ref.current.position;
         if (e.altKey) {
-          removeCube(id);
+          removeCube(x, y, z);
           return;
         }
         if (clickedFace === 0) addCube(x + 1, y, z);
