@@ -12,5 +12,5 @@
 - [x] Adding cubes to field
 - [x] Removeeing cubes to field
 - [x] Cube type selector
-- [] Save world in localstorage
+- [x] Save world in localstorage
 - [] Build a house

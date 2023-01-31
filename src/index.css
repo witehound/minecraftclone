@@ -61,3 +61,8 @@ body {
 .texture-selctor img.active {
   border: 2px solid red;
 }
+
+.menu {
+  top: 2rem;
+  left: 2rem;
+}
