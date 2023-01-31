@@ -37,8 +37,11 @@ export const useStore = create((set) => ({
     });
   },
   resetWorld: () => {
-    set(() => ({
-      cubes: [],
-    }));
+    set(() => {
+      window.localStorage.removeItem("cubes");
+      return {
+        cubes: [],
+      };
+    });
   },
 }));
