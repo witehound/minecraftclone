@@ -4,8 +4,25 @@ import { useKeyboard, useStore } from "../../hooks";
 
 const TextureSelctor = () => {
   const [visible, setVisible] = useState(false);
-  const [activeTexture] = useStore((state) => [state.texture]);
-  const actions = useKeyboard();
+  const [activeTexture, setTexture] = useStore((state) => [
+    state.texture,
+    state.setTexture,
+  ]);
+  const { dirt, grass, glass, wood, log } = useKeyboard();
+
+  useEffect(() => {
+    const textures = {
+      dirt,
+      grass,
+      glass,
+      wood,
+      log,
+    };
+    const newTexture = Object.entries(textures).find(([k, v]) => v);
+    if (newTexture) {
+      setTexture(newTexture[0]);
+    }
+  }, [dirt, grass, glass, wood, log]);
 
   useEffect(() => {
     const visibilityTimeOut = setTimeout(() => {
@@ -18,7 +35,11 @@ const TextureSelctor = () => {
     };
   }, [activeTexture]);
   return (
-    <div>{visible ? <div className="absolute centered"></div> : null}</div>
+    <div>
+      {visible ? (
+        <div className="absolute centered">TexturSeleector</div>
+      ) : null}
+    </div>
   );
 };
 

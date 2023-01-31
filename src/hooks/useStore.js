@@ -22,7 +22,11 @@ export const useStore = create((set) => ({
       }),
     }));
   },
-  setTexture: () => {},
+  setTexture: (t) => {
+    set((prev) => ({
+      texture: t,
+    }));
+  },
   saveWorld: () => {},
   resetWorld: () => {},
 }));
